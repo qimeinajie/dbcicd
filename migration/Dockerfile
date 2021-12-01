@@ -4,11 +4,11 @@ MAINTAINER xk
 
 WORKDIR /migration
 
-COPY db db
+ADD db db
 
 ADD md5 md5
 
-COPY liquibase /migration/
+ADD liquibase liquibase
 
 COPY *.sh /migration/
 
