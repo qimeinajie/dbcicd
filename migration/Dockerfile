@@ -10,7 +10,7 @@ ADD md5 md5
 
 ADD liquibase liquibase
 
-ADD migration/liquibase/lib/h2-1.4.200.jar liquibase/lib/
+RUN ls -al liquibase
 
 COPY *.sh /migration/
 
