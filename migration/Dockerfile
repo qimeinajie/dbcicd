@@ -23,5 +23,4 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # EXPOSE 9090
 
-#ENTRYPOINT ["/migration/migration_entrypoint.sh"]
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/migration/migration_entrypoint.sh"]
