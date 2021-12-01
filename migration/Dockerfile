@@ -10,6 +10,8 @@ ADD md5 md5
 
 ADD liquibase liquibase
 
+ADD liquibase/lib/*.jar liquibase/lib/
+
 COPY *.sh /migration/
 
 #RUN chmod 777 /migration && chmod 755 /migration/liquibase/liquibase && chmod 755 /migration/*.sh
