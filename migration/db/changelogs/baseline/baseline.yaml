@@ -1,0 +1,13 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1
+      author: xkadmin
+
+  - include:
+      file: DDL/001_create_tables_baseline.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: DML/001_insert_data_baseline.sql
+      relativeToChangelogFile: true

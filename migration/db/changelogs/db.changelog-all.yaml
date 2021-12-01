@@ -1,0 +1,9 @@
+databaseChangeLog:
+
+  - include:
+      file: baseline/baseline.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: migration/migration.yaml
+      relativeToChangelogFile: true

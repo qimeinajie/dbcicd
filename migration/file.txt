@@ -1,0 +1,58 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1
+      author: xkadmin
+
+  - include:
+      file: DDL/001_create_tables_baseline.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: DML/001_insert_data_baseline.sql
+      relativeToChangelogFile: true
+--liquibase formatted sql
+--changeset techgeeknext:create-tables
+
+CREATE TABLE employee(
+                         id INT PRIMARY KEY,
+                         name VARCHAR(40)
+);
+
+CREATE TABLE branch(
+                       id INT PRIMARY KEY,
+                       name VARCHAR(40),
+                       emp_id INT,
+                       FOREIGN KEY(emp_id) REFERENCES employee(id) ON DELETE CASCADE
+);
+
+--rollback drop table if exists employee,branch;
+--liquibase formatted sql
+--changeset techgeeknext:inset-employee-01
+INSERT INTO employee VALUES(01, 'User1');
+INSERT INTO employee VALUES(02, 'User2');
+INSERT INTO employee VALUES(03, 'User3');
+INSERT INTO employee VALUES(04, 'User4');
+
+--rollback select 1;
+databaseChangeLog:
+
+  - include:
+      file: baseline/baseline.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: migration/migration.yaml
+      relativeToChangelogFile: true
+--liquibase formatted sql
+--changeset techgeeknext:inset-branch-01
+INSERT INTO branch VALUES(1, 'User1',01);
+INSERT INTO branch VALUES(2, 'User2',02);
+INSERT INTO branch VALUES(3, 'User3',03);
+INSERT INTO branch VALUES(4, 'User4',04);
+--rollback select 1;
+databaseChangeLog:
+
+  - include:
+      file: DML/002_insert_data.sql
+      relativeToChangelogFile: true

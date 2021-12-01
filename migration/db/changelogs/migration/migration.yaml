@@ -1,0 +1,5 @@
+databaseChangeLog:
+
+  - include:
+      file: DML/002_insert_data.sql
+      relativeToChangelogFile: true
