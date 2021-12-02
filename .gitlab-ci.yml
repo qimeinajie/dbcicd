@@ -13,5 +13,5 @@ docker build:
     - find migration/db/ -type f
     - find migration/db/ -type f | xargs cat > migration/combine_file.txt && md5sum migration/combine_file.txt | awk '{print $1}' > migration/md5
     - cat migration/md5
-    - docker build -f migration/Dockerfile -t www.xk.docker-registry.com:5501/migration:v1 migration/
+    - docker build -f migration/Dockerfile -t www.xk.docker-registry.com:5501/migration:`cat migration/md5` migration/
 
