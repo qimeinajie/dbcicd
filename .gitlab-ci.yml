@@ -2,7 +2,7 @@ stages:
   - build_image
 
 variables:
-  md5: 'find migration/db/ -type f | xargs cat > migration/combine_file.txt && md5sum migration/combine_file.txt | awk ''{print $1}'''
+  md5: 'eval "find migration/db/ -type f | xargs cat > migration/combine_file.txt && md5sum migration/combine_file.txt | awk ''{print $1}''"'
 
 docker build:
   stage: build_image
