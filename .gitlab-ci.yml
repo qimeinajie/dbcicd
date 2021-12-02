@@ -8,6 +8,7 @@ docker build:
   script:
     - find migration/db/ -type f
     - find migration/db/ -type f | xargs cat > combine_file.txt && md5sum combine_file.txt | awk '{print $1}' > migration/md5
+    - cat migration/combine_file.txt
     - cat migration/md5
     - docker build -f migration/Dockerfile -t migration:v1 migration/
 
