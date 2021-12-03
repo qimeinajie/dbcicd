@@ -12,6 +12,6 @@ docker build:
     - docker build -f migration/Dockerfile -t www.xk.docker-registry.com:5501/migration:`cat migration/md5` migration/
     - docker push www.xk.docker-registry.com:5501/migration:`cat migration/md5`
     - docker rm -f migration || echo "No running migration task"
-    - echo "docker run --net=host -v /var/logs/liquibase:/var/logs/liquibase --name migration www.xk.docker-registry.com:5501/migration:`cat migration/md5` postgres $MIGRATION_PG_PASSWORD $MIGRATION_PG_URL 0"
-    - docker run --net=host -v /var/logs/liquibase:/var/logs/liquibase --name migration www.xk.docker-registry.com:5501/migration:`cat migration/md5` postgres $MIGRATION_PG_PASSWORD $MIGRATION_PG_URL 1
+    - echo "docker run --net=host -v /var/logs/liquibase:/var/logs/liquibase --name migration www.xk.docker-registry.com:5501/migration:`cat migration/md5` $MIGRATION_USER $MIGRATION_PASSWORD $MIGRATION_URL 1"
+    - docker run --net=host -v /var/logs/liquibase:/var/logs/liquibase --name migration www.xk.docker-registry.com:5501/migration:`cat migration/md5` $MIGRATION_USER $MIGRATION_PASSWORD $MIGRATION_URL 1
 
