@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-username=$1
-password=$2
-url=$3
-
-md5=`find /migration/db/ -type f | xargs cat > combine_file.txt && md5sum combine_file.txt | awk '{print $1}'`
-echo "/migration/liquibase/liquibase --username=$username --password=$password --url=$url tag $md5"
-/migration/liquibase/liquibase --username=$username --password=$password --url=$url tag $md5
-

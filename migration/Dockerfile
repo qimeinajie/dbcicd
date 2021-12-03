@@ -15,7 +15,7 @@ COPY *.sh /migration/
 #RUN chmod 777 /migration && chmod 755 /migration/liquibase/liquibase && chmod 755 /migration/*.sh
 RUN chmod -R 777 /migration
 
-VOLUME /var/logs
+VOLUME /var/logs/liquibase
 
 RUN echo 'Asia/Shanghai' > /etc/timezone
 

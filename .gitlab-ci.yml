@@ -1,8 +1,8 @@
 stages:
-  - build_image
+  - migration
 
 docker build:
-  stage: build_image
+  stage: migration
   tags:
     - compile
   script:
@@ -11,3 +11,7 @@ docker build:
     - cat migration/md5
     - docker build -f migration/Dockerfile -t www.xk.docker-registry.com:5501/migration:`cat migration/md5` migration/
     - docker push www.xk.docker-registry.com:5501/migration:`cat migration/md5`
+    - docker rm -f migration || echo "No running migration task"
+    - echo "docker run --net=host -v /var/logs/liquibase:/var/logs/liquibase --name migration www.xk.docker-registry.com:5501/migration:`cat migration/md5` postgres $MIGRATION_PG_PASSWORD $MIGRATION_PG_URL 0"
+    - docker run --net=host -v /var/logs/liquibase:/var/logs/liquibase --name migration www.xk.docker-registry.com:5501/migration:`cat migration/md5` postgres $MIGRATION_PG_PASSWORD $MIGRATION_PG_URL 0
+

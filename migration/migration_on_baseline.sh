@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 echo "baseline migration start."
-logLevel=INFO
-logFile=/var/logs/liquibase.log
+. /migration/var.sh
 username=$1
 password=$2
 url=$3
