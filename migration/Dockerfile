@@ -1,6 +1,6 @@
-FROM www.xk.docker-registry.com:5501/openjdk:8u302-jre
+FROM openjdk:8
 
-MAINTAINER xk
+MAINTAINER pass niu
 
 WORKDIR /migration
 
@@ -8,7 +8,7 @@ ADD db db
 
 ADD md5 md5
 
-ADD liquibase liquibase
+ADD ../liquibase liquibase
 
 COPY *.sh /migration/
 
