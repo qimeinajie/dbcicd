@@ -2,7 +2,7 @@ FROM openjdk:8
 
 MAINTAINER pass niu
 
-ADD /liquibase liquibase
+COPY /liquibase liquibase
 
 WORKDIR /migration
 
